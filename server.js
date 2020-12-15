@@ -15,8 +15,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
+const mykey = process.env.KEY;
+
 mongoose.connect(
-  "mongodb+srv://admin:${KEY}@blogdb.9vdcr.mongodb.net/blogDb?retryWrites=true&w=majority",
+  "mongodb+srv://admin:" +
+    mykey +
+    "@blogdb.9vdcr.mongodb.net/blogDb?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
